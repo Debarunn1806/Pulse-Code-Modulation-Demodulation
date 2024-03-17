@@ -2,8 +2,8 @@ clc
 clear all
 close all
 
-n=5;
-n1=32;
+n=5; // number of bits
+n1=32; // Frequency of analog signal
 lengthb=2^n;
  
 x=0:2*pi/n1:4*pi;               
@@ -14,7 +14,11 @@ title('Analog Signal');
 ylabel('Amplitude--->');
 xlabel('Time--->');
 subplot(5,1,2);
+
+% Sampling
 stem(s);  title('Sampled Sinal'); 
+
+% Quantization
  vmx=5;
  vmn=-vmx;
  dst=(vmx-vmn)/lengthb;
@@ -39,6 +43,7 @@ stem(s);  title('Sampled Sinal');
  stairs(q);                                      
  title('Quantized Signal');
 
+% Encoding
  code=de2bi(ind,'left-msb');             
  k=1;
  coded(k)=0;
@@ -56,6 +61,7 @@ coded;
 axis([0 100 -2 3]);  
 title('Encoded Signal');
 
+% Decoding
  qunt=reshape(coded,n,length(coded)/n);
  index=bi2de(qunt','left-msb');                    
  q=dst*index+vmn+(dst/2);                       
