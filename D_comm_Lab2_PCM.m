@@ -2,8 +2,8 @@ clc
 clear all
 close all
 
-n=5; // number of bits
-n1=32; // Frequency of analog signal
+n=5; % number of bits
+n1=32; %  Frequency of analog signal
 lengthb=2^n;
  
 x=0:2*pi/n1:4*pi;               
